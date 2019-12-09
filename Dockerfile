@@ -10,7 +10,7 @@ LABEL Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsf
 RUN apt-get update
 RUN apt-get install -y \
 	vsftpd \
-	db5.3-utils \
+	db5.3-util \
 	db5.3 
 
 RUN usermod -u ${USER_ID} ftp
