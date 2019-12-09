@@ -1,7 +1,7 @@
 FROM kdelfour/supervisor-docker
 
 ARG USER_ID=14
-ARG GROUP_ID=50
+ARG GROUP_ID=51
 
 MAINTAINER HRQ
 LABEL Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
