@@ -41,9 +41,6 @@ VOLUME /var/log/vsftpd
 
 RUN apt-get install -y nginx
 
-RUN chmod +x /etc/supervisord.conf
-RUN chown -R /etc/supervisord.conf
-
 EXPOSE 20 21 80
 
-CMD ["supervisord -c /etc/supervisord.conf"]
+CMD ["supervisord -c /etc/supervisor//supervisord.conf"]
