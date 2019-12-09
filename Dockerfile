@@ -39,10 +39,10 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-RUN apt-get install -y \
-	vsftpd \
-	db5.3-util \
-	db5.3 
+RUN apt-get install -y nginx
+
+RUN chmod +x /etc/supervisord.conf
+RUN chown -R /etc/supervisord.conf
 
 EXPOSE 20 21 80
 
