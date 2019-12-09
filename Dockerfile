@@ -39,6 +39,11 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21
+RUN apt-get install -y \
+	vsftpd \
+	db5.3-util \
+	db5.3 
+
+EXPOSE 20 21 80
 
 CMD ["supervisord -c /etc/supervisord.conf"]
