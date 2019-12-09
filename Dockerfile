@@ -40,8 +40,8 @@ VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
 RUN apt-get install -y nginx
-COPY vsftpd.ini /etc/supervisor/conf.d
-COPY nginx.ini /etc/supervisor/conf.d
+COPY supervisor-vsftpd.conf /etc/supervisor/conf.d
+COPY supervisor-nginx.conf /etc/supervisor/conf.d
 
 EXPOSE 20 21 80
 
