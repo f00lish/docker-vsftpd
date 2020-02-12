@@ -18,6 +18,7 @@ RUN yum install -y \
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp
 
+ENV FTP_PORT **String**
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
 ENV PASV_ADDRESS **IPv4**
@@ -41,6 +42,6 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21
+#EXPOSE 20 21
 
 CMD ["/usr/sbin/run-vsftpd.sh"]
