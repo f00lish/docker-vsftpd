@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Set listen port:
+if [ "$FTP_PORT" = "**String**" ]; then
+    export FTP_USER='21'
+fi
+
 # If no env var for FTP_USER has been specified, use 'admin':
 if [ "$FTP_USER" = "**String**" ]; then
     export FTP_USER='admin'
@@ -30,7 +35,7 @@ echo -e "${FTP_USER}\n${FTP_PASS}" > /etc/vsftpd/virtual_users.txt
 if [ "$PASV_ADDRESS" = "**IPv4**" ]; then
     export PASV_ADDRESS=$(/sbin/ip route|awk '/default/ { print $3 }')
 fi
-
+echo "listen_port=${FTP_PORT}" >> /etc/vsftpd/vsftpd.conf
 echo "pasv_address=${PASV_ADDRESS}" >> /etc/vsftpd/vsftpd.conf
 echo "pasv_max_port=${PASV_MAX_PORT}" >> /etc/vsftpd/vsftpd.conf
 echo "pasv_min_port=${PASV_MIN_PORT}" >> /etc/vsftpd/vsftpd.conf
