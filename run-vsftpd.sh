@@ -2,7 +2,7 @@
 
 # Set listen port:
 if [ "$FTP_PORT" = 21 ]; then
-    export FTP_USER=21
+    export FTP_PORT=21
 fi
 
 # If no env var for FTP_USER has been specified, use 'admin':
