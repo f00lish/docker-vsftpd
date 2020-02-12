@@ -16,7 +16,7 @@ RUN apt-get install -y \
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp
 
-ENV FTP_PORT **String**
+ENV FTP_PORT 21
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
 ENV PASV_ADDRESS **IPv4**
