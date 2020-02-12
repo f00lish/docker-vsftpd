@@ -16,6 +16,7 @@ RUN apt-get install -y \
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp
 
+ENV FTP_PORT **String**
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
 ENV PASV_ADDRESS **IPv4**
@@ -43,6 +44,6 @@ RUN apt-get install -y nginx
 COPY supervisor-vsftpd.conf /etc/supervisor/conf.d
 COPY supervisor-nginx.conf /etc/supervisor/conf.d
 
-EXPOSE 20 21 80
+#EXPOSE 20 21 80
 
 CMD ["supervisord -c /etc/supervisor/supervisord.conf"]
