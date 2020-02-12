@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set listen port:
-if [ "$FTP_PORT" = "**String**" ]; then
-    export FTP_USER='21'
+if [ "$FTP_PORT" = 21 ]; then
+    export FTP_USER=21
 fi
 
 # If no env var for FTP_USER has been specified, use 'admin':
