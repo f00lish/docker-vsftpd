@@ -1,19 +1,17 @@
-FROM centos:7
+FROM kdelfour/supervisor-docker
 
 ARG USER_ID=14
-ARG GROUP_ID=50
+ARG GROUP_ID=51
 
-MAINTAINER Fer Uria <fauria@gmail.com>
-LABEL Description="vsftpd Docker image based on Centos 7. Supports passive mode and virtual users." \
-	License="Apache License 2.0" \
-	Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
+MAINTAINER HRQ
+LABEL Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
 	Version="1.0"
 
-RUN yum -y update && yum clean all
-RUN yum install -y \
+RUN apt-get update
+RUN apt-get install -y \
 	vsftpd \
-	db4-utils \
-	db4 && yum clean all
+	db5.3-util \
+	db5.3 
 
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp
@@ -42,6 +40,10 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-#EXPOSE 20 21
+RUN apt-get install -y nginx
+COPY supervisor-vsftpd.conf /etc/supervisor/conf.d
+COPY supervisor-nginx.conf /etc/supervisor/conf.d
 
-CMD ["/usr/sbin/run-vsftpd.sh"]
+#EXPOSE 20 21 80
+
+CMD ["supervisord -c /etc/supervisor/supervisord.conf"]
