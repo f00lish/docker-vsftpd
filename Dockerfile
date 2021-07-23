@@ -1,4 +1,4 @@
-FROM jeffkyjin/supervisor-docker
+FROM kdelfour/supervisor-docker
 
 ARG USER_ID=14
 ARG GROUP_ID=51
